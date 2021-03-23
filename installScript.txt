@@ -1,0 +1,23 @@
+cd ~
+yum install -y git zip ncurses-devel.x86_64 lrzsz python
+wget https://github.com/vim/vim/archive/refs/heads/master.zip
+unzip master.zip
+cd vim-master
+./configure
+make -j2 && make install
+
+cd ~
+git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_vimrc.sh
+
+git clone git://github.com/joelthelion/autojump.git
+.autojump/install.py
+echo "[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh" >> ~/.bashrc
+source ~/.bashrc
+
+cd ~
+sed -i 's/ens33/eth0/g' /etc/sysconfig/network-scripts/ifcfg-eth0
+sed -i 's/quiet/net\.ifnames=0 biosdevname=0 quiet/' /etc/default/grub
+grub2-mkconfig -o /boot/grub2/grub.cfg
+reboot
+wget -N --no-check-certificate https://raw.githubusercontent.com/NetBT/shadowsocks/master/installScript.sh && bash installScript.sh
