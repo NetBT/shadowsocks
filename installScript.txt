@@ -1,5 +1,5 @@
 cd ~
-yum install -y git zip ncurses-devel.x86_64 lrzsz python
+yum install -y git ncurses-devel.x86_64 lrzsz net-tools
 wget https://github.com/vim/vim/archive/refs/heads/master.zip
 unzip master.zip
 cd vim-master
@@ -11,7 +11,8 @@ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 
 git clone git://github.com/joelthelion/autojump.git
-.autojump/install.py
+cd autojump
+./install.py
 echo "[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh" >> ~/.bashrc
 source ~/.bashrc
 
