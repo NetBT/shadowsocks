@@ -15,6 +15,9 @@ cd autojump
 ./install.py
 echo "[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh" >> ~/.bashrc
 source ~/.bashrc
+wget https://openresty.org/package/centos/openresty.repo -O /etc/yum.repos.d/openresty.repo
+yum check-update
+yum install -y openresty
 
 cd ~
 sed -i 's/ens33/eth0/g' /etc/sysconfig/network-scripts/ifcfg-eth0
